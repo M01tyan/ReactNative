@@ -1,0 +1,37 @@
+import React, { Component } from 'react';
+import { AppRegistry, Platform, StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+
+export default class App extends Component {
+    render() {
+	return (
+		<NavigatorIOS initialRoute={{ component: MyScene, title: 'My Initial Scene', passProps: { myProp: 'foo' }}} />
+	);
+    }
+}
+
+const styles = StyleSheet.create({
+    bigblue: {
+	color: 'blue',
+	fontWeight: 'bold',
+	fontSize: Platform.OS === 'android' ? 30 : 20
+    },
+    red: {
+	color: 'red'
+    }
+});
+
+class HomeScreen extends Component {
+    static navigationOptions = {
+	title: 'welcome'
+    };
+    render() {
+	const { navigate } = this.props.navigation;
+	return (
+		<Button title="Go to Jane's profile" onPress={() => navigate('Profile', { name: 'Jane'})}
+		/>
+	);
+    }
+}
+
+AppRegistry.registerComponent('AwesomeProject', () => LotsOfStyles);
